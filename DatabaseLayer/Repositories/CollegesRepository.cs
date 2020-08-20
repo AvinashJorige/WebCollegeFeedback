@@ -18,7 +18,7 @@ namespace DatabaseLayer.Repositories
         {
             using (var command = _context.CreateCommand())
             {
-                command.CommandText = "select CollgId, CollegeName, Link, Address, Image, AboutCollege from tbl_College_T with(nolock) where IsActive = 1";
+                command.CommandText = "select CollgId, CollegeName, Link, Address, Image, AboutCollege from tbl_Colleges_T with(nolock) where IsActive = 1";
                 return this.ToList(command).ToList();
             }
         }

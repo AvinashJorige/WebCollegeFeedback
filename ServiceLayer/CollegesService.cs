@@ -8,7 +8,7 @@ namespace ServiceLayer
 {
     public class CollegesService : ICollegesService
     {
-        #region objecct Declaraction
+        #region object Declaraction
         private readonly IConnectionFactory connectionFactory;
         readonly DbContext context;
         CollegesRepository collegesRepository;

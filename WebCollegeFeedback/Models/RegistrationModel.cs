@@ -1,13 +1,19 @@
-﻿using System;
+﻿using DomainLayer;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebCollegeFeedback.Models
 {
     public class RegistrationModel
     {
-        [Required(ErrorMessage = "Please Enter User Name")]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
+        [Required(ErrorMessage = "Please select the College")]
+        [Display(Name = "College Name")]
+        public string CollegeCode { get; set; }
+
+        [Required(ErrorMessage = "Please Enter User Code")]
+        [Display(Name = "User Code")]
+        public string UserCode { get; set; }
 
         [Required(ErrorMessage = "Please Enter Password")]
         [StringLength(30, ErrorMessage = "Must be between 5 and 30 characters", MinimumLength = 5)]
@@ -15,11 +21,15 @@ namespace WebCollegeFeedback.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Please Enter User Name")]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
         [Required(ErrorMessage = "Please Re-Enter Password")]
         [Display(Name = "Confirm Password")]
         [StringLength(30, ErrorMessage = "Must be between 5 and 30 characters", MinimumLength = 5)]
         [DataType(DataType.Password)]
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Password and Confirmation Password must match.")]
         public string RePassword { get; set; }
 
         [Required(ErrorMessage = "Please Enter EMail")]
@@ -45,5 +55,7 @@ namespace WebCollegeFeedback.Models
         [Required(ErrorMessage = "Please upload Image")]
         [Display(Name = "Image")]
         public string Image { get; set; }
+        
+        public IEnumerable<CollegesModel> CollegesList { get; set; }
     }
 }

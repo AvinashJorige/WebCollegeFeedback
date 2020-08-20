@@ -126,7 +126,6 @@
     <Compile Include="Areas\Freshers\Models\FresherLoginModel.cs" />
     <Compile Include="Areas\Students\Controllers\AccountsController.cs" />
     <Compile Include="Areas\Students\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Students\Models\StudentLoginModel.cs" />
     <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -188,6 +187,7 @@
     <Content Include="Areas\Freshers\Views\Home\FresherFeedback.cshtml" />
     <Content Include="Areas\Freshers\Views\Home\About.cshtml" />
     <Content Include="Areas\Students\Views\Home\About.cshtml" />
+    <Content Include="Areas\Students\Views\Accounts\Register.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -217,6 +217,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Students\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -235,6 +236,10 @@
     <ProjectReference Include="..\DomainLayer\DomainLayer.csproj">
       <Project>{98383194-7B36-47AF-B239-0215282ADF08}</Project>
       <Name>DomainLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
+      <Project>{7BF91057-37FD-45F3-8CE3-D1CC24D5AD5A}</Project>
+      <Name>ServiceLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utility\Utility.csproj">
       <Project>{0119dc8a-af09-4e68-943c-2983cdf42be4}</Project>
@@ -259,7 +264,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57072</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57072/</IISUrl>
+          <IISUrl>http://localhost:57071/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

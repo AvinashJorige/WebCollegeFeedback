@@ -37,5 +37,25 @@ namespace DatabaseLayer.Repositories
                 return this.ToList(command).FirstOrDefault();
             }
         }
+
+        public StudentModel RegisterStudent(StudentModel student)
+        {
+            using (var command = _context.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "USP_STUDENT_REGISTRATION";
+
+                command.Parameters.Add(command.CreateParameter("@CollegeCode", student.CollegeCode));
+                command.Parameters.Add(command.CreateParameter("@UserName", student.UserName));
+                command.Parameters.Add(command.CreateParameter("@Password", student.Password));
+                command.Parameters.Add(command.CreateParameter("@Email", student.Email));
+                command.Parameters.Add(command.CreateParameter("@Address", student.Address));
+                command.Parameters.Add(command.CreateParameter("@DOB", student.DOB));
+                command.Parameters.Add(command.CreateParameter("@ContactNo", student.ContactNo));
+                command.Parameters.Add(command.CreateParameter("@Image", student.Image));
+
+                return this.ToList(command).FirstOrDefault();
+            }
+        }
     }
 }

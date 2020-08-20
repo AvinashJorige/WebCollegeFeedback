@@ -44,5 +44,21 @@ namespace ServiceLayer
 
             return studentsRepository.ValidateLogin(clgCode, userid, password);
         }
+
+        public bool RegisterStudent(StudentModel student)
+        {
+            bool bSuccess = false;
+            if (student != null)
+            {
+                student.Password = EncryptDecryptAES.Encrypt(student.Password);
+                StudentModel model = studentsRepository.RegisterStudent(student);
+                
+                if(model != null)
+                {
+                    return bSuccess = true;
+                }
+            }
+            return bSuccess;
+        }
     }
 }
