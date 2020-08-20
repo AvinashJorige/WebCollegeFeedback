@@ -1,31 +1,130 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<link href="~/Plugins/owlcarousel/assets/owl.carousel.css" rel="stylesheet" />
+<link href="~/Plugins/owlcarousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+<link href="~/Content/Quotes/Quote.css" rel="stylesheet" />
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="col-md-12">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Images/Colleges/University1.jpg" alt="University 1" width="100%" height="300px">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/Colleges/University2.jpg" alt="University 2" width="100%" height="300px">
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/Colleges/University3.jpg" alt="University 3" width="100%" height="300px">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+
     </div>
 </div>
+
+<div class="row  mb-3">
+    <div class="col-md-12">
+        <div class="owl-carousel owl-theme mb-2 mt-2">
+            <div class="item">
+                <blockquote class="quote-card yellow-card">
+                    <p>
+                        We all need people who will give us feedback. That’s how we improve.
+                    </p>
+
+                    <cite>
+                        Bill Gates
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="item">
+                <blockquote class="quote-card blue-card">
+                    <p>
+                        Feedback is the breakfast of champions.
+                    </p>
+
+                    <cite>
+                        Ken Blanchard
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="item">
+                <blockquote class="quote-card red-card">
+                    <p>
+                        Average players want to be left alone. Good players want to be coached. Great players want to be told the truth.
+                    </p>
+
+                    <cite>
+                        Doc Rivers
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="item">
+                <blockquote class="quote-card yellow-card">
+                    <p>
+                        Make feedback normal. Not a performance review.
+                    </p>
+
+                    <cite>
+                        Ed Batista
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="item">
+                <blockquote class="quote-card blue-card">
+                    <p>
+                        I think it’s very important to have a feedback loop, where you’re constantly thinking about what you’ve done and how you could be doing it better..
+                    </p>
+
+                    <cite>
+                        Elon Musk
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="item">
+                <blockquote class="quote-card green-card">
+                    <p>
+                        Feedback is the breakfast of champions.
+                    </p>
+
+                    <cite>
+                        Ken Blanchard
+                    </cite>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Plugins/owlcarousel/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10, autoplay: true,
+                autoplayHoverPause: true,
+                items: 1,
+                dots: false
+            })
+        })
+    </script>
+}

@@ -120,10 +120,24 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Freshers\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\Freshers\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Freshers\FreshersAreaRegistration.cs" />
+    <Compile Include="Areas\Freshers\Models\FresherLoginModel.cs" />
+    <Compile Include="Areas\Students\Controllers\AccountsController.cs" />
+    <Compile Include="Areas\Students\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Students\Models\StudentLoginModel.cs" />
+    <Compile Include="Areas\Students\StudentsAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomAuthenticationFilter.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\RegistrationModel.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
+    <Compile Include="Models\UsersRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,12 +145,49 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Quotes\Quote.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\About\About.png" />
+    <Content Include="Images\About\About2.png" />
+    <Content Include="Images\About\About3.png" />
+    <Content Include="Images\Colleges\University1.jpg" />
+    <Content Include="Images\Colleges\University2.jpg" />
+    <Content Include="Images\Colleges\University3.jpg" />
+    <Content Include="Plugins\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Plugins\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Plugins\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Plugins\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Plugins\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Plugins\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Plugins\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Plugins\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Plugins\owlcarousel\owl.carousel.js" />
+    <Content Include="Plugins\owlcarousel\owl.carousel.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Plugins\owlcarousel\README.md" />
+    <Content Include="Areas\Students\Views\web.config" />
+    <Content Include="Areas\Freshers\Views\web.config" />
+    <Content Include="Areas\Students\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Students\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Students\Views\Accounts\Login.cshtml" />
+    <Content Include="Areas\Freshers\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Freshers\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Freshers\Views\Accounts\Login.cshtml" />
+    <Content Include="Areas\Students\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Students\Views\Home\StudentProfile.cshtml" />
+    <Content Include="Areas\Students\Views\Home\StudentColleges.cshtml" />
+    <Content Include="Areas\Students\Views\Home\StudentPlacements.cshtml" />
+    <Content Include="Areas\Students\Views\Home\StudentFeedback.cshtml" />
+    <Content Include="Areas\Freshers\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Freshers\Views\Home\FresherProfile.cshtml" />
+    <Content Include="Areas\Freshers\Views\Home\FresherColleges.cshtml" />
+    <Content Include="Areas\Freshers\Views\Home\FresherFeedback.cshtml" />
+    <Content Include="Areas\Freshers\Views\Home\About.cshtml" />
+    <Content Include="Areas\Students\Views\Home\About.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -162,10 +213,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +230,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainLayer\DomainLayer.csproj">
+      <Project>{98383194-7B36-47AF-B239-0215282ADF08}</Project>
+      <Name>DomainLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{0119dc8a-af09-4e68-943c-2983cdf42be4}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
