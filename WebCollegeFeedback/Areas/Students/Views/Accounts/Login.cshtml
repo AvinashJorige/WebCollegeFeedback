@@ -4,159 +4,272 @@
     ViewBag.Title = "Login";
 }
 
+<style>
+    input.error {
+        border: 1px solid red;
+    }
+
+    label.error {
+        font-weight: normal;
+        color: red;
+    }
+
+    #txtaddress {
+        max-height: 118px;
+    }
+
+    .form-group label {
+        font-weight:500;
+    }
+</style>
+
+
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#login">Login</a>
+        <a class="nav-link font-weight-bold active" data-toggle="tab" href="#login" id="aLogin">Login</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#register">Register</a>
+        <a class="nav-link font-weight-bold" data-toggle="tab" href="#register" id="aRegister">Register</a>
     </li>
 </ul>
 <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active show" id="login">
-        <div class="tab-pane fade active show pl-5 pr-5 pt-2" id="login">
-
-            @using (Html.BeginForm("Login", "Accounts"))
-            {
-                @Html.AntiForgeryToken()
-
-                <div class="form-horizontal m-auto">
-
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.CollegeCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.CollegeCode,
-                                   new SelectList(Model.CollegesList.Select(x=> new { Value = x.CollgId, Text = x.CollegeName}), "Value","Text", "True"),
-                                   new { htmlAttributes = new { @class = "form-control" } }
-                           )
-                            @Html.ValidationMessageFor(model => model.CollegeCode, "", new { @class = "text-danger" })
+    <div class="tab-pane fade show active" id="login">
+        <form action="Login" id="LoginForm" name="LoginForm" method="post" autocomplete="off">
+            <div class="row justify-content-md-center">
+                <div class="col-6">
+                    <div class="row ">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="username">User Name</label>
+                                <input type="text" class="form-control" id="txtusername" name="username">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.UserCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.UserCode, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.UserCode, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="clgName">College Name</label>
+                                <select class="form-control" id="ddlclgName">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="txtpassword" name="password">
+                            </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Login" class="btn btn-success" />
-                            <input type="reset" value="Clear" class="btn btn-warning" />
+                            <input type="submit" value="Login" id="btnLoginSubmit" class="btn btn-success" />
+                            <input type="reset" value="Clear" id="btnLoginReset" class="btn btn-warning" />
                         </div>
-                    </div>
-                </div>
-            }
-
-        </div>
-    </div>
-    <div class="tab-pane fade" id="register">
-
-        @using (Html.BeginForm("Register", "Accounts"))
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CollegeCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.CollegeCode,
-                               new SelectList(Model.CollegesList.Select(x=> new { Value = x.CollgId, Text = x.CollegeName}), "Value","Text", "True"),
-                               new { htmlAttributes = new { @class = "form-control" } }
-                       )
-                        @Html.ValidationMessageFor(model => model.CollegeCode, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.RePassword, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", type = "date" } })
-                                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Complete Address", rows = "10" } })
-                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Register" class="btn btn-success" />
                     </div>
                 </div>
             </div>
-        }
+
+        </form>
+    </div>
+    <div class="tab-pane fade" id="register">
+        <form action="/" method="post" id="RegisterForm" name="RegisterForm" autocomplete="off">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="text" class="form-control" id="txtusername" name="username">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="clgName">College Name</label>
+                        <select class="form-control" id="ddlclgName">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" id="txtpassword" name="password">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="confirmPassword">Re-type password</label>
+                        <input type="text" class="form-control" id="txtconfirmPassword" name="confirmPassword">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="email">Email id</label>
+                        <input type="email" class="form-control" id="txtemail" name="email">
+                        <small id="smImage" class="form-text text-muted">jsmith@example.com</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">DOB</label>
+                        <input type="date" class="form-control" id="txtemail" name="dob">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="txtaddress" name="address" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="text" class="form-control" id="txtcontact" name="contact">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input type="file" class="form-control-file" id="txtImage">
+                        <small id="smImage" class="form-text text-muted"><b class="text-danger">Note:</b> Please upload Image of format .JPG /.PNG with 2MB data file size.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Register" id="btnRegistrationSubmit" class="btn btn-success" />
+                    <input type="reset" value="Clear" id="btnRegistrationReset" class="btn btn-warning" />
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+
+@section scripts{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(document).ready(function () {
+                var LoginValidator = $("#LoginForm").validate({
+                    rules: {
+                        "username": {
+                            required: true,
+                            minlength: 5
+                        },
+                        "password": {
+                            required: true,
+                            minlength: 5
+                        }
+                    },
+                    messages: {
+                        "username": {
+                            required: "Please, enter user name"
+                        },
+                        "password": {
+                            required: "Please, enter password"                            
+                        }
+                    },
+                    submitHandler: function (form) { // for demo
+                        alert('valid form submitted'); // for demo
+                        return false; // for demo
+                    }
+                });
+
+                var RegistrationValidator = $("#RegisterForm").validate({
+                    rules: {
+                        "username": {
+                            required: true,
+                            minlength: 5
+                        },
+                        "password": {
+                            required: true,
+                            minlength: 5
+                        },
+                        "confirmPassword": {
+                            required: true,
+                            minlength: 5,
+                            equalTo: "#password"
+                        },
+                        "email": {
+                            required: true,
+                            email: true
+                        },
+                        "contact": {
+                            required: true,
+                            number: true,
+                            minlength: 10,
+                            maxlength: 10
+                        },
+                        "address": {
+                            required: true,
+                            minlength: 10,
+                            maxlength: 100
+                        },
+                        "dob": {
+                            required: true,
+                        }
+                    },
+                    messages: {
+                        "username": {
+                            required: "Please, enter user name"
+                        },
+                        "password": {
+                            required: "Please, enter password"
+                        },
+                        "confirmPassword": {
+                            required: "Please, enter Re-type Password",
+                            equalTo: "Re-type password is not matching with password."
+                        },
+                        "email": {
+                            required: "Please, enter email address.",
+                            email: "Please, enter valid email address."
+                        },
+                        "contact": {
+                            required: "Please, enter Contact number.",
+                            number: "Please, enter valid contact number",
+                            minlength: "Please, enter valid contact number",
+                            maxlength: "Please, enter valid contact number"
+                        },
+                        "address": {
+                            required: "Please, enter address"
+                        },
+                        "dob": {
+                            required: "Please, set the date of birth",
+                        }
+                    },
+                    submitHandler: function (form) { // for demo
+                        alert('valid form submitted'); // for demo
+                        return false; // for demo
+                    }
+                });
+
+
+                $("#aLogin, #btnRegistrationReset").click(function () {
+                    RegistrationValidator.resetForm();
+                });
+
+                $("#aRegister, #btnLoginReset").click(function () {
+                    LoginValidator.resetForm();
+                });
+            });
+        });
+    </script>
+}
 

@@ -21,8 +21,15 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("College Management", "AddCollege", "Colleges", null, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                }
+                else
+                {
+                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                }
             </ul>
             <ul class="navbar-nav float-right">
                 @if (User.Identity.IsAuthenticated)
