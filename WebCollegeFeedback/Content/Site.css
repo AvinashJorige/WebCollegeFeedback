@@ -293,6 +293,16 @@
 .hide {
     display:none;
 }
+
+input.error, textarea.error, select.error {
+    border: 1px solid red;
+}
+
+label.error {
+    font-weight: normal;
+    color: red;
+}
+
 /* --------------------- Media Queries ------------------------------ */
 @media (max-width: 767px) {
     .section-preview .image img {

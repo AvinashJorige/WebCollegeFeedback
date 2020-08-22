@@ -11,7 +11,7 @@
         textarea {
             max-height: 77px;
             min-height: 77px;
-        }        
+        }
     </style>
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -121,7 +121,7 @@
                         <button type="button" class="btn btn-primary btn-sm float-right back-clg"><i class="fa fa-arrow-right"></i> Back</button>
                     </div>
                 </div>
-                <form name="CollegeAdd" id="AddCollege" class="AddCollege mt-4">
+                <form method="post" name="CollegeFormAdd" id="CollegeFormAdd" class="CollegeFormAdd mt-4">
                     <div class="row">
                         <div class="col">
                             <!-- Left panel -->
@@ -135,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="clgImg">College Image Upload</label>
-                                <input type="file" class="form-control-file" id="txtImage">
+                                <input type="file" class="form-control-file" id="txtImage" name="clgImg">
                                 <small id="smImage" class="form-text text-muted"><b class="text-danger">Note:</b> Please upload Image of format .JPG /.PNG with 2MB data file size.</small>
                             </div>
                         </div>
@@ -155,7 +155,7 @@
                     <div class="row">
                         <div class="col ">
                             <div class="form-group float-right">
-                                <input type="submit" value="Register" id="btnAddCollege" class="btn btn-success" />
+                                <input type="submit" value="Add College" id="btnAddCollege" class="btn btn-success" />
                                 <input type="reset" value="Clear" id="btnCollegeReset" class="btn btn-warning" />
                             </div>
                         </div>
@@ -168,5 +168,8 @@
 
 
 @section scripts{
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="~/Scripts/Custom/CollegeManagementScript.js"></script>
 }
