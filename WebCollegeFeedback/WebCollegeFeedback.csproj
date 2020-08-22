@@ -190,6 +190,7 @@
     <Content Include="Areas\Students\Views\Home\About.cshtml" />
     <Content Include="Areas\Students\Views\Accounts\Register.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Custom\CollegeManagementScript.js" />
     <Content Include="Scripts\Custom\CommonAjax.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

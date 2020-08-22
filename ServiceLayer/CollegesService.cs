@@ -25,5 +25,20 @@ namespace ServiceLayer
         {
             return collegesRepository.GetCollegesList();
         }
+
+        public object SaveCollegeDetails(CollegesModel colleges)
+        {
+            return collegesRepository.SaveCollegeDetails(colleges);
+        }
+
+        public object UpdateCollegeDetails(CollegesModel colleges)
+        {
+            return collegesRepository.UpdateCollegeDetails(colleges);
+        }
+
+        public object DeleteCollegeDetails(string CollegeId)
+        {
+            return collegesRepository.DeleteCollegeDetails(CollegeId);
+        }
     }
 }

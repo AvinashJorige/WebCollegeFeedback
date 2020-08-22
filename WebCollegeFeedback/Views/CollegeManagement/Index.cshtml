@@ -2,6 +2,171 @@
 @{
     ViewBag.Title = "Index";
 }
+@section Styles {
+    <style>
+        .form-group label {
+            font-weight: 500;
+        }
 
-<h2>Index</h2>
+        textarea {
+            max-height: 77px;
+            min-height: 77px;
+        }        
+    </style>
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+<br />
+<div class="row ">
+    <div class="col">
+        <div class="card CollegeManagementScreen">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="card-title">College Management</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Manage the college by Add, edit or delete</h6>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-sm float-right add-clg"><i class="fa fa-plus"></i> Add College</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Column heading</th>
+                                    <th scope="col">Column heading</th>
+                                    <th scope="col">Column heading</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-active">
+                                    <th scope="row">Active</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Default</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th scope="row">Primary</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-secondary">
+                                    <th scope="row">Secondary</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-success">
+                                    <th scope="row">Success</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-danger">
+                                    <th scope="row">Danger</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-warning">
+                                    <th scope="row">Warning</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-info">
+                                    <th scope="row">Info</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-light">
+                                    <th scope="row">Light</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="table-dark">
+                                    <th scope="row">Dark</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card AddCollege hide">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="card-title">Add College</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">Add new college and details</h6>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-sm float-right back-clg"><i class="fa fa-arrow-right"></i> Back</button>
+                    </div>
+                </div>
+                <form name="CollegeAdd" id="AddCollege" class="AddCollege mt-4">
+                    <div class="row">
+                        <div class="col">
+                            <!-- Left panel -->
+                            <div class="form-group">
+                                <label for="clgName">College Name</label>
+                                <input type="text" class="form-control" id="txtclgName" name="clgName">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <textarea class="form-control" id="txtaddress" name="address" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="clgImg">College Image Upload</label>
+                                <input type="file" class="form-control-file" id="txtImage">
+                                <small id="smImage" class="form-text text-muted"><b class="text-danger">Note:</b> Please upload Image of format .JPG /.PNG with 2MB data file size.</small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <!-- Right panel -->
+                            <div class="form-group">
+                                <label for="clgLink">Link</label>
+                                <input type="text" class="form-control" id="txtclgLink" name="clgLink">
+                            </div>
+                            <div class="form-group">
+                                <label for="aboutClg">About College</label>
+                                <textarea class="form-control" id="txtaboutClg" name="aboutClg" rows="3"></textarea>
+                                <small id="smImage" class="form-text text-muted">Tell about the college in 100 words</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col ">
+                            <div class="form-group float-right">
+                                <input type="submit" value="Register" id="btnAddCollege" class="btn btn-success" />
+                                <input type="reset" value="Clear" id="btnCollegeReset" class="btn btn-warning" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/Custom/CollegeManagementScript.js"></script>
+}

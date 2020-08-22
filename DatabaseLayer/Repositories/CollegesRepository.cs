@@ -23,5 +23,55 @@ namespace DatabaseLayer.Repositories
             }
         }
 
+        public object SaveCollegeDetails(CollegesModel colleges)
+        {
+            using (var command = _context.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usp_College_SaveDetails";
+
+                command.Parameters.Add(command.CreateParameter("@name",     colleges.CollegeName));
+                command.Parameters.Add(command.CreateParameter("@link",     colleges.Link));
+                command.Parameters.Add(command.CreateParameter("@address",  colleges.Address));
+                command.Parameters.Add(command.CreateParameter("@image",    colleges.Image));
+                command.Parameters.Add(command.CreateParameter("@about",    colleges.AboutCollege));
+
+                // return this.ToList(command).FirstOrDefault();
+                return this.ToList(command).SingleOrDefault();
+            }
+        }
+
+        public object UpdateCollegeDetails(CollegesModel colleges)
+        {
+            using (var command = _context.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usp_College_UpdateDetails";
+
+                command.Parameters.Add(command.CreateParameter("@clgId", colleges.CollgId));
+                command.Parameters.Add(command.CreateParameter("@name", colleges.CollegeName));
+                command.Parameters.Add(command.CreateParameter("@link", colleges.Link));
+                command.Parameters.Add(command.CreateParameter("@address", colleges.Address));
+                command.Parameters.Add(command.CreateParameter("@image", colleges.Image));
+                command.Parameters.Add(command.CreateParameter("@about", colleges.AboutCollege));
+
+                // return this.ToList(command).FirstOrDefault();
+                return this.ToList(command).SingleOrDefault();
+            }
+        }
+
+        public object DeleteCollegeDetails(string CollegeId)
+        {
+            using (var command = _context.CreateCommand())
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usp_College_DeActivateDetails";
+
+                command.Parameters.Add(command.CreateParameter("@clgId", CollegeId));
+
+                // return this.ToList(command).FirstOrDefault();
+                return this.ToList(command).SingleOrDefault();
+            }
+        }
     }
 }

@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - College Feedback System</title>
     @*@Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")*@
     <link rel="stylesheet" href="~/Content/bootstrap.css" media="screen">
     <link rel="stylesheet" href="~/Content/Site.css" media="screen">
+    @RenderSection("Styles", false)
 </head>
 <body>
     <div class="col-md-11 col-xs-11 text-center m-5">
