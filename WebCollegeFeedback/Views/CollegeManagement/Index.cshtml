@@ -12,9 +12,13 @@
             max-height: 77px;
             min-height: 77px;
         }
+        .CollegeDetails .col-9 {
+            padding: 0 35px;
+        }
     </style>
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
 
 
 <br />
@@ -31,79 +35,19 @@
                         <button type="button" class="btn btn-primary btn-sm float-right add-clg"><i class="fa fa-plus"></i> Add College</button>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col">
-                        <table class="table table-hover">
-                            <thead>
+                        <table class="table table-hover tblColgList table-striped">
+                            <thead class="bg-success text-white">
                                 <tr>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Column heading</th>
-                                    <th scope="col">Column heading</th>
-                                    <th scope="col">Column heading</th>
+                                    <th scope="col">College Id</th>
+                                    <th scope="col">College Name</th>
+                                    <th scope="col">Link</th>
+                                    <th scope="col">About College</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="table-active">
-                                    <th scope="row">Active</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Default</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-primary">
-                                    <th scope="row">Primary</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-secondary">
-                                    <th scope="row">Secondary</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-success">
-                                    <th scope="row">Success</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-danger">
-                                    <th scope="row">Danger</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-warning">
-                                    <th scope="row">Warning</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-info">
-                                    <th scope="row">Info</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-light">
-                                    <th scope="row">Light</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                                <tr class="table-dark">
-                                    <th scope="row">Dark</th>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                    <td>Column content</td>
-                                </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -167,9 +111,109 @@
 </div>
 
 
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title clgTitle">College Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row CollegeDetails">
+                    <div class="col-3">
+                        <img src="#" alt="Image" class="img-fluid img-thumbnail" id="imgCollegeImage" />
+                    </div>
+                    <div class="col-9 border-left">
+                        <div class="form-group row border-bottom">
+                            <label for="collegeId" class="col-sm-2 col-form-label">College Id</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly="" class="form-control-plaintext" id="collegeId" name="collegeId" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row border-bottom">
+                            <label for="collegeName" class="col-sm-2 col-form-label">College Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly="" class="form-control-plaintext" id="collegeName" name="collegeName" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row border-bottom">
+                            <label for="collegeLink" class="col-sm-2 col-form-label">Link</label>
+                            <div class="col-sm-10">
+                                <input type="text" readonly="" class="form-control-plaintext" id="collegeLink" name="collegeLink" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row border-bottom">
+                            <label for="collegeAbout" class="col-sm-2 col-form-label">About College</label>
+                            <div class="col-sm-10">
+                                <textarea readonly="" id="collegeAbout" name="collegeAbout" class="form-control-plaintext"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="CollegeAddress" class="col-sm-2 col-form-label">Address</label>
+                            <div class="col-sm-10">                                
+                                <textarea readonly="" id="CollegeAddress" name="CollegeAddress" class="form-control-plaintext"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row CollegeDetailsEdit hide">
+                    <div class="col">
+                        <form method="post" name="CollegeDetailFormEdit" id="CollegeDetailFormEdit">
+                            <input type="hidden" class="form-control" id="txtCollegeId" name="txtCollegeId">
+                            <div class="form-group">
+                                <label for="CollegeName">College Name</label>
+                                <input type="text" class="form-control" id="txtCollegeName" name="txtCollegeName">
+                            </div>
+                            <div class="form-group">
+                                <label for="ClgLink">Link</label>
+                                <input type="text" class="form-control" id="txtClgLink" name="txtClgLink">
+                            </div>
+                            <div class="form-group">
+                                <label for="ClgAddress">Address</label>
+                                <textarea class="form-control" id="txtClgAddress" name="txtClgAddress" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="ClgAbout">About</label>
+                                <textarea class="form-control" id="txtClgAbout" name="txtClgAbout" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="ClgImg">Image</label>
+                                <input type="file" class="form-control-file" id="txtClgImage" name="clgImg">
+                                <small id="smImage" class="form-text text-muted"><b class="text-danger">Note:</b> Please upload Image of format .JPG /.PNG with 2MB data file size.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-success hide" id="btnClgFormSubmit">Update</button>
+                                    <button type="button" class="btn btn-dark hide" id="btnClgFormBack">Back</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="btnClgFormEdit">Edit</button>
+                <button type="button" class="btn btn-danger" id="btnCls" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 @section scripts{
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="text/javascript"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js" integrity="sha512-6Uv+497AWTmj/6V14BsQioPrm3kgwmK9HYIyWP+vClykX52b0zrDGP7lajZoIY1nNlX4oQuh7zsGjmF7D0VZYA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js" integrity="sha512-EanukVTZc4W9tUCLnDl069Izidg49PcNRKO1upLzKt9ajq66i+bXOtlzXcIbRhb6vVEGF6BCc8wQi5T1ztCpTQ==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/Custom/CollegeManagementScript.js"></script>
 }
